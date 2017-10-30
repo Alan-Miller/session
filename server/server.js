@@ -1,3 +1,4 @@
+// REQUIRES
 require('dotenv').config();
 const express = require('express')
     , bodyParser = require('body-parser')
@@ -9,8 +10,9 @@ const express = require('express')
     , PORT = process.env.PORT
     , connection = process.env.CONNECTION_STRING;
 
+// MIDDLEWARE
+// app.use(express.static(`${__dirname}/../public/build`));
 app.use(bodyParser.json());
-app.use(express.static(`${__dirname}/../public/build`));
 massive(connection).then(db => app.set('db', db));
 
 app.use(session({
@@ -21,6 +23,7 @@ app.use(session({
 }));
 app.use(currentSession);
 
-api(app); // API endpoints
+// API ENDPOINTS
+api(app);
 
 app.listen(PORT, _ => console.log(`Server listening on ${PORT}.`));
