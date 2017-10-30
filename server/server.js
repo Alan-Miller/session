@@ -23,4 +23,4 @@ app.use(currentSession);
 
 api(app); // API endpoints
 
-app.listen(PORT, _ => console.log(`Listening on ${PORT}.`));
+app.listen(PORT, _ => console.log(`Server listening on ${PORT}.`));
