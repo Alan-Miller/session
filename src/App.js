@@ -16,7 +16,7 @@ export default class App extends Component {
   }
 
   storeInput(email) {
-    this.setState({email})
+    this.setState({ email })
   }
 
   poorMansLogin(e) {

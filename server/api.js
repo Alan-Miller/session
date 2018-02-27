@@ -2,6 +2,8 @@ module.exports = app => {
   app.get('/api/users', (req, res) => {
     req.app.get('db').GET_users()
       .then(users => {
+        console.log("users", users)
+        req.session.user = users[0]
         // console.log('\nUSER', req.session.user);
         // console.log('\nAGE', req.session.cookie);
         res.status(200).send(users)

@@ -10,11 +10,12 @@ const express = require('express')
     , PORT = process.env.PORT
     , connection = process.env.CONNECTION_STRING;
 
+// MASSIVE DB
+massive(connection).then(db => app.set('db', db));
+
 // MIDDLEWARE
 // app.use(express.static(`${__dirname}/../public/build`));
 app.use(bodyParser.json());
-massive(connection).then(db => app.set('db', db));
-
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
